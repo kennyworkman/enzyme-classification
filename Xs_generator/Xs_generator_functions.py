@@ -219,6 +219,10 @@ def atom_list_generator(struct,siteinfo,siteseq,HasSite):
 
 def get_atom_list(struct, catseq, ubindseq):
     #iterate all residues, decide if each functions as cat, bind, het, or struct and extract its atom info into these catagories
+    #cat = catalytic;
+    #bind = binding sites that interact with metals,ligands,etc;
+    #het = non amino acid residues (cofactors, metals, ligands)
+    #struct = no documented function
     cat_atom_list = []
     bind_atom_list = []
     het_atom_list = []

@@ -3,5 +3,8 @@ Xs_generator/Xs
 Xs_generator/atom_list
 Xs_generator/raw_structure
 Xs_generator/__pycache__
+data/test
+data/train
+data/validate
 __pycache__/model.cpython-37.pyc
 
