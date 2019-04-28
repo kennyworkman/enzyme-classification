@@ -1,0 +1,13 @@
+#!/bin/bash
+
+cd ./Xs_generator/
+
+echo "Extracing numpy arrays from PDB Database..."
+python Xs_generator.py
+echo "Finished generating raw data."
+echo "#############################"
+echo "Processing and Splitting data into training, validating, and sample batches..."
+cd ..
+python build_dataset.py
+echo "Finished. Open Notebook to train model"
+echo "#############################"

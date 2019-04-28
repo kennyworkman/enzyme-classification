@@ -89,44 +89,5 @@ def retrieve_labeled_data(dir):
 
 build_populate_data()
 train_Xs, train_labels = retrieve_labeled_data("./data/train")
-validate_Xs, train_Xs = retrieve_labeled_data("./data/validate")
-test_Xs, train_Xs = retrieve_labeled_data("./data/test")
-
-# def retrieve_paths(directory):
-#     """
-#     Return list of paths for each X (numpy data file)
-#     """
-#     return [os.path.join(directory, filename) for filename in os.listdir(directory) if filename.endswith('.npy')]
-#
-# def retrieve_paths_dict(Xs):
-#     """
-#     Need to pass a list of PATHS for each data file
-#     Returns Dictionary of PATH matched with label
-#     """
-#     data = {}
-#     for path in Xs:
-#         filename = os.path.basename(path)
-#         name = filename[:4]
-#         row = labeled_data.loc[labeled_data['label'] == name]
-#         data[path] = row.type.iloc[0]
-#     return data
-#
-# def retrieve_labeled_data(dict):
-#     """
-#     Pass a dict of paths and labels
-#     Returns samples (#, x, y, z, channel) and labels (#,)
-#     """
-#     samples, labels = [], []
-#     for path in dict:
-#         samples.append(np.load(path))
-#         labels.append(dict[path])
-#     return np.array(samples), np.array(labels)
-
-
-# paths = retrieve_paths('/Users/kenny/desktop/chem195/enzyme_classifier/Xs_generator/Xs')
-# paths_dict = retrieve_paths_dict(paths)
-#
-# Xs, labels = retrieve_labeled_data(paths_dict)
-
-
-#filename[:4]
+validate_Xs, validate_labels = retrieve_labeled_data("./data/validate")
+test_Xs, test_labels = retrieve_labeled_data("./data/test")
