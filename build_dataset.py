@@ -72,8 +72,25 @@ def build_populate_data():
     fill_dir(val_filenames, "./data/validate")
     fill_dir(test_filenames, "./data/test")
 
-build_populate_data()
+def retrieve_labeled_data(dir):
+    """
+    Retrieves numpy array of samples and numpy array of labels within given dir
+    Make sure LABEL_CSV is defined above.
+    """
+    files = retrieve_filename(dir)
+    samples, labels = [], []
+    for file in files:
+        enzyme = file[:4]
+        csv_row = labeled_data.loc[labeled_data['label'] == enzyme]
+        label = csv_row.type.iloc[0]
+        samples.append(np.load(os.path.join(dir, file)))
+        labels.append(label)
+    return np.array(samples), np.array(labels)
 
+build_populate_data()
+train_Xs, train_labels = retrieve_labeled_data("./data/train")
+validate_Xs, train_Xs = retrieve_labeled_data("./data/validate")
+test_Xs, train_Xs = retrieve_labeled_data("./data/test")
 
 # def retrieve_paths(directory):
 #     """
