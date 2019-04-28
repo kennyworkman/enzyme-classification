@@ -1,0 +1,7 @@
+#Don't track the content of these following data directories
+Xs_generator/Xs
+Xs_generator/atom_list
+Xs_generator/raw_structure
+Xs_generator/__pycache__
+
+
