@@ -49,7 +49,8 @@ batch_summary.csv
 
 #######################################################################
 
-TOP_DIR = '/home/paperspace/enzyme_classification/Xs_generator' #the top directory, change to your own address
+####CHANGE TO CURRENT WORKING DIRECTORY
+TOP_DIR = '/home/paperspace/enzyme_classification/Xs_generator' 
 DATA_DIR = 'raw_structure'
 ATOM_DIR = 'atom_list'
 Xs_DIR = 'Xs'

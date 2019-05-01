@@ -124,7 +124,7 @@ def retrieve_labels(dict):
 # build_populate_data()
 
 ### UNCOMMENT TO CREATE DICTIONARIES FOR GENERATOR CLAS
-partition = retrieve_partioned_data('/Users/kenny/desktop/chem195/enzyme_classifier/data')
+partition = retrieve_partioned_data('/data')
 labels = retrieve_labels(partition)
 
 ### UNCOMMENT FOLLOWING BLOCK TO GENERATE NUMPY ARRAYS OF DATA INSTEAD OF DICTIONARY REFERENCES
