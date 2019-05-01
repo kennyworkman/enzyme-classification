@@ -1,5 +1,5 @@
 import os
-from shutil import copyfile
+from shutil import copyfile, rmtree
 
 import numpy as np
 import pandas as pd
@@ -10,9 +10,10 @@ LABEL_CSV = "Xs_generator/batch_classification.csv" #insert csv with label info
 
 labeled_data = pd.read_csv(LABEL_CSV, sep='\t')
 
-#split Xs files by 80/10/10 distribution into train, validate, test directories
-#retrieve labels for each sample (make dictionary with path and label)
-#create seperate numpy arrays for each
+"""
+split Xs files by 80/10/10 distribution into train, validate, test directories
+Option to then generate numpy array of data or dictionary of references (works better with keras generate)
+"""
 
 def retrieve_filename(directory):
     """
@@ -50,7 +51,7 @@ def build_data_dir():
     """
     make_change("./data")
     make("train")
-    make("validate")
+    make("validation")
     make("test")
     os.chdir("..")
 
@@ -69,7 +70,7 @@ def build_populate_data():
     build_data_dir()
     train_filenames, val_filenames, test_filenames = split_files(retrieve_filename(PRE_DATA))
     fill_dir(train_filenames, "./data/train")
-    fill_dir(val_filenames, "./data/validate")
+    fill_dir(val_filenames, "./data/validation")
     fill_dir(test_filenames, "./data/test")
 
 def retrieve_labeled_data(dir):
@@ -79,15 +80,54 @@ def retrieve_labeled_data(dir):
     """
     files = retrieve_filename(dir)
     samples, labels = [], []
-    for file in files:
-        enzyme = file[:4]
+    for enzyme in files:
         csv_row = labeled_data.loc[labeled_data['label'] == enzyme]
         label = csv_row.type.iloc[0]
         samples.append(np.load(os.path.join(dir, file)))
         labels.append(label)
     return np.array(samples), np.array(labels)
 
-build_populate_data()
-train_Xs, train_labels = retrieve_labeled_data("./data/train")
-validate_Xs, validate_labels = retrieve_labeled_data("./data/validate")
-test_Xs, test_labels = retrieve_labeled_data("./data/test")
+def remove_extension(list):
+    """
+    Remove file extension from a list of samples
+    """
+    return [file.split('.')[0] for file in list]
+
+def retrieve_partioned_data(dir):
+    """
+    Retrieves dictionary of partioned sample IDs from given data directory
+    Make sure PATH is passed as string
+    """
+    train = retrieve_filename(os.path.join(dir, 'train'))
+    validation = retrieve_filename(os.path.join(dir, 'validation'))
+    test = retrieve_filename(os.path.join(dir, 'test'))
+    train, validation, test = remove_extension(train), remove_extension(validation), remove_extension(test)
+    return {'train': train, 'validation': validation, 'test': test}
+
+def retrieve_labels(dict):
+    """
+    Returns dictioanry of labels for each sample in the partion dictionary
+    """
+    labels = {}
+    total_list = dict['train'] + dict['validation'] + dict['test']
+    for enzyme in total_list:
+        enzyme = enzyme[:4]
+        csv_row = labeled_data.loc[labeled_data['label'] == enzyme]
+        try:
+            label = csv_row.type.iloc[0]
+        except IndexError:
+            raise ValueError('Information for {} doesnt exist in the provided labeled csv'.format(enzyme))
+        labels[enzyme] = label
+    return labels
+
+### UNCOMMENT TO CREATE/POPULATE DIRECTORIES
+# build_populate_data()
+
+### UNCOMMENT TO CREATE DICTIONARIES FOR GENERATOR CLAS
+partition = retrieve_partioned_data('/Users/kenny/desktop/chem195/enzyme_classifier/data')
+labels = retrieve_labels(partition)
+
+### UNCOMMENT FOLLOWING BLOCK TO GENERATE NUMPY ARRAYS OF DATA INSTEAD OF DICTIONARY REFERENCES
+# train_Xs, train_labels = retrieve_labeled_data("./data/train")
+# validate_Xs, validate_labels = retrieve_labeled_data("./data/validation")
+# test_Xs, test_labels = retrieve_labeled_data("./data/test")

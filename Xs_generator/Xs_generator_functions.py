@@ -18,7 +18,7 @@ input: batch_classification, dtype = .csv. The whole list of enzymes for classif
 output: batch_summary, dtype = .csv. The list of enzymes which have documented site information, containing their labels, types, and atom space statistics.
 
        Xs, dtype = numpy array. The atom space of enzymes which have documented site information.
-This notebook was created by Zhe Ji
+This script was created by Zhe Ji and modified by Kenny Workman
 
 """
 
@@ -39,7 +39,7 @@ Directory Tree:
     ...
 
 -- Xs
-    1A9Q_X.npy
+    1A9Q.npy
     ...
 
 batch_classification.csv
@@ -49,7 +49,7 @@ batch_summary.csv
 
 #######################################################################
 
-TOP_DIR = '/Users/kenny/desktop/chem195/enzyme_classifier/Xs_generator' #the top directory, change to your own address
+TOP_DIR = 'Xs_generator' #the top directory, change to your own address
 DATA_DIR = 'raw_structure'
 ATOM_DIR = 'atom_list'
 Xs_DIR = 'Xs'
@@ -460,7 +460,7 @@ def channel_generator (atom_list, v_size=64, grid_distance = 0.5):
 def write_X(X,label):
     os.chdir(TOP_DIR)
     make_change(Xs_DIR)
-    np.save(label+'_X.npy', X)
+    np.save(label+'.npy', X)
 
 def write_batch_summary(batch_summary):
     df_labels = ['label','type','cat','bind','het','struct','sum']
