@@ -121,7 +121,7 @@ def retrieve_labels(dict):
     return labels
 
 ### UNCOMMENT TO CREATE/POPULATE DIRECTORIES
-# build_populate_data()
+build_populate_data()
 
 ### UNCOMMENT TO CREATE DICTIONARIES FOR GENERATOR CLAS
 partition = retrieve_partioned_data('/data')
