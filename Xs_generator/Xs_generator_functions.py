@@ -49,7 +49,7 @@ batch_summary.csv
 
 #######################################################################
 
-TOP_DIR = 'Xs_generator' #the top directory, change to your own address
+TOP_DIR = './Xs_generator' #the top directory, change to your own address
 DATA_DIR = 'raw_structure'
 ATOM_DIR = 'atom_list'
 Xs_DIR = 'Xs'
