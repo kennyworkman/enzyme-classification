@@ -12,3 +12,4 @@ python build_dataset.py
 echo "Finished. Training model"
 echo "#############################"
 echo $(python final_model.py)
+echo $(Finishing training model; stored in project directory.)
