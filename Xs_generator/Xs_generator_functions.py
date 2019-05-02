@@ -55,7 +55,7 @@ DATA_DIR = 'raw_structure'
 ATOM_DIR = 'atom_list'
 Xs_DIR = 'Xs'
 ERROR_FILE = '404notfound.txt'
-CLASSIFICATION = '/Users/kenny/Desktop/chem195/enzyme_classifier/Xs_generator/test_classification.csv'
+CLASSIFICATION = 'test_classification.csv'
 
 def read_batch():
     #load batch_classfication.csv
