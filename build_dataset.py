@@ -67,10 +67,14 @@ def build_populate_data():
     Builds new data directory in . that has train, val, test subdirs
     Define PRE_DATA path above
     """
+    print("Building data directories and split subdirectories.")
     build_data_dir()
     train_filenames, val_filenames, test_filenames = split_files(retrieve_filename(PRE_DATA))
+    print("Filling training directory...")
     fill_dir(train_filenames, "./data/train")
+    print("Filling validation directory...")
     fill_dir(val_filenames, "./data/validation")
+    print("Filling test directory...")
     fill_dir(test_filenames, "./data/test")
 
 def retrieve_labeled_data(dir):
