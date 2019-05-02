@@ -9,5 +9,6 @@ echo "#############################"
 echo "Processing and Splitting data into training, validating, and sample batches..."
 cd ..
 python build_dataset.py
-echo "Finished. Open Notebook to train model"
+echo "Finished. Training model"
 echo "#############################"
+echo $(python final_model.py)

@@ -50,7 +50,7 @@ batch_summary.csv
 #######################################################################
 
 ####CHANGE TO CURRENT WORKING DIRECTORY
-TOP_DIR = '/home/paperspace/enzyme_classification/Xs_generator'
+TOP_DIR = '/Users/kenny/Desktop/chem195/enzyme_classifier/Xs_generator'
 DATA_DIR = 'raw_structure'
 ATOM_DIR = 'atom_list'
 Xs_DIR = 'Xs'
@@ -60,7 +60,7 @@ CLASSIFICATION = 'test_classification.csv'
 def read_batch():
     #load batch_classfication.csv
     os.chdir(TOP_DIR)
-    batch = pd.read_csv(CLASSIFICATION, sep='\t') # Columns are 'label' and 'type'
+    batch = pd.read_csv(CLASSIFICATION) # Columns are 'label' and 'type'
     return batch
 
 def make_change(name):
