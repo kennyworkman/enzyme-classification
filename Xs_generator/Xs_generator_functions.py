@@ -13,7 +13,7 @@ from sklearn.cluster import DBSCAN
 
 This notebook uses an enzyme label list to generates the Xs for CNN training.
 
-input: batch_classification, dtype = .csv. The whole list of enzymes for classification, containing their labels and types
+input: enzyme_classification, dtype = .csv. The whole list of enzymes for classification, containing their labels and types
 
 output: batch_summary, dtype = .csv. The list of enzymes which have documented site information, containing their labels, types, and atom space statistics.
 
@@ -50,16 +50,17 @@ batch_summary.csv
 #######################################################################
 
 ####CHANGE TO CURRENT WORKING DIRECTORY
-TOP_DIR = '/home/paperspace/enzyme_classification/Xs_generator' 
+TOP_DIR = '/home/paperspace/enzyme_classification/Xs_generator'
 DATA_DIR = 'raw_structure'
 ATOM_DIR = 'atom_list'
 Xs_DIR = 'Xs'
 ERROR_FILE = '404notfound.txt'
+CLASSIFICATION = '/Users/kenny/Desktop/chem195/enzyme_classifier/Xs_generator/test_classification.csv'
 
 def read_batch():
     #load batch_classfication.csv
     os.chdir(TOP_DIR)
-    batch = pd.read_csv('batch_classification.csv',sep='\t') # Columns are 'label' and 'type'
+    batch = pd.read_csv(CLASSIFICATION, sep='\t') # Columns are 'label' and 'type'
     return batch
 
 def make_change(name):
