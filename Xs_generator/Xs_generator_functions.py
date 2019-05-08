@@ -17,9 +17,6 @@ input: enzyme_classification, dtype = .csv. The whole list of enzymes for classi
 
 output: batch_summary, dtype = .csv. The list of enzymes which have documented site information, containing their labels, types, and atom space statistics.
 
-       Xs, dtype = numpy array. The atom space of enzymes which have documented site information.
-This script was created by Zhe Ji and modified by Kenny Workman
-
 """
 
 #######################################################################
