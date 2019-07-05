@@ -8,5 +8,7 @@ chmod +x config
 
 ./config
 
+A neural network that classifies protein catalytic activity by volumetric structure and atom type/function. Repository includes 3D CNN model architecture, and full data extraction/processing pipeline.
+
 
 
