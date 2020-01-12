@@ -4,7 +4,7 @@
 
 ## Further Reading
 
-See the paper written on this repository. 
+See the paper written on this project located in the repository named `enzyme_classifcation_summary.pdf`.
 
 
 
