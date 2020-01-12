@@ -1,12 +1,10 @@
-# Data Pipeline and CNN Architecture to classify enzymes by function given PDB data
+# CNN for Enzyme Classification
 
-Make sure values of PRE_DATA, LABEL_CSV, TOP_DIR are populated
+3D Convolutional Neural Network that classifies enzymes into one of six groups based on catalytic activity. Volumetric arrays of protein structure, using a variety of intuitive features (atom type, atom function vis a vis enzyme behavior), were used as labeled inputs.
 
-Run the following commands to configure when you are in the root directory:
+## Further Reading
 
-chmod +x config
-
-./config
+See the paper written on this repository. 
 
 
 
